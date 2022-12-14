@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'application'
+    id 'checkstyle'
 }
 
 group 'hexlet.code'
@@ -20,6 +21,9 @@ dependencies {
             'org.slf4j:slf4j-log4j12:2.0.0-alpha6',
             'org.assertj:assertj-core:3.22.0'
     )
+    implementation(
+            implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
+    )
 
 }
 
@@ -31,4 +35,7 @@ application {
 }
 compileJava {
     options.release = 17
+}
+run {
+    standardInput = System.in
 }
