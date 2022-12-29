@@ -2,44 +2,54 @@ package hexlet.code;
 
 import java.util.Scanner;
 
-import hexlet.code.games.*;
+import hexlet.code.games.Calc;
+import hexlet.code.games.Even;
+import hexlet.code.games.GCD;
+import hexlet.code.games.Prime;
+import hexlet.code.games.Progression;
 import org.apache.commons.lang3.RandomUtils;
 public class Engine {
-    public static String userName;
-    public static String answer;
-    public static int number;
-    public static int number2;
+    public static final int maxRandom = 100;
     public static final int WINCOUNT = 3;
-    public static void randomNumber() {
-        int maxRandom = 100;
-        number = RandomUtils.nextInt(2, maxRandom);
-        number2 = RandomUtils.nextInt(2, maxRandom);
+
+    public static int randomNumber() {
+        return RandomUtils.nextInt(2, maxRandom);
     }
+
+    public static int randomNumber2() {
+        return RandomUtils.nextInt(2, maxRandom);
+    }
+
     public static void greet() {
         System.out.println("Welcome to the Brain Games!");
         System.out.println("May I have your name?");
+    }
+
+    public static String getNameFromUser() {
+        Scanner sc = new Scanner(System.in);
+        return sc.next();
+    }
+
+    public static void greeting2(String name) {
+        System.out.println("Hello, " + name + "!");
+    }
+
+    public static String userAnswer() {
         Scanner scan = new Scanner(System.in);
-        userName = scan.next();
-        System.out.println("Hello, " + userName + "!");
+        return scan.next();
     }
-    public static void answer() {
-        Scanner scan = new Scanner(System.in);
-        answer = scan.next();
-        System.out.println("Your answer: " + answer);
-    }
-    public static void wrongAnswer(String correctAnswer) {
-        System.out.printf("'%s' is wrong answer ;(. Correct answer was '%s'.\n", answer, correctAnswer);
-        System.out.printf("Let's try again, %s!\n", userName);
-    }
-    public static boolean condition(String correctAnswer) {
+
+    public static boolean condition(String correctAnswer, String name, String answer) {
         if (answer.equals(correctAnswer)) {
             System.out.println("Correct!");
         } else {
-            wrongAnswer(correctAnswer);
+            System.out.printf("'%s' is wrong answer ;(. Correct answer was '%s'.\n", answer, correctAnswer);
+            System.out.printf("Let's try again, %s!\n", name);
             return true;
         }
         return false;
     }
+
     public static void enter() {
         System.out.println("""
                 Please enter the game number and press Enter.
@@ -53,34 +63,32 @@ public class Engine {
         Scanner scan = new Scanner(System.in);
         int choice = scan.nextInt();
         System.out.println("Your choice: " + choice);
-        final var greeting = 1;
+        if (choice == 1) {
+            greet();
+            var name = getNameFromUser();
+            greeting2(name);
+        } else if (choice != 0) {
+            greet();
+            var name = getNameFromUser();
+            greeting2(name);
+            game(choice, name);
+        }
+    }
+
+    public static void game(int choice, String name) {
         final var even = 2;
         final var calc = 3;
         final var gcd = 4;
         final var progression = 5;
         final var prime = 6;
+
         switch (choice) {
-            case greeting -> greet();
-            case even -> {
-                greet();
-                Even.even();
-            }
-            case calc -> {
-                greet();
-                Calc.calculate();
-            }
-            case gcd -> {
-                greet();
-                GCD.gcd();
-            }
-            case progression -> {
-                greet();
-                Progression.ariphmProgr();
-            }
-            case prime -> {
-                greet();
-                Prime.isPrime();
-            }
+            case even -> Even.even(name);
+            case calc -> Calc.calculate(name);
+            case gcd -> GCD.gcd(name);
+            case progression -> Progression.ariphmProgr(name);
+            case prime ->
+                Prime.isPrime(name);
             default -> {
             }
         }

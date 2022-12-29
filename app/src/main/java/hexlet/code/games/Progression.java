@@ -3,15 +3,14 @@ package hexlet.code.games;
 import org.apache.commons.lang3.RandomUtils;
 
 import static hexlet.code.Engine.WINCOUNT;
-import static hexlet.code.Engine.answer;
+import static hexlet.code.Engine.userAnswer;
 import static hexlet.code.Engine.condition;
-import static hexlet.code.Engine.userName;
 
 public class Progression {
     private static int first;
     private static int step;
     private static String hiddenNumber;
-    public static void ariphmProgr() {
+    public static void ariphmProgr(String name) {
         System.out.println("What number is missing in the progression?");
         for (var i = 0; i < WINCOUNT; i++) {
             final int maxNumber = 50;
@@ -19,13 +18,13 @@ public class Progression {
             first = RandomUtils.nextInt(1, maxNumber);
             step = RandomUtils.nextInt(1, maxStep);
             array();
-            answer();
+            var answer = userAnswer();
             var correctAnswer = hiddenNumber;
-            if (condition(correctAnswer)) {
+            if (condition(correctAnswer, name, answer)) {
                 return;
             }
         }
-        System.out.println("Congratulations, " + userName + "!");
+        System.out.println("Congratulations, " + name + "!");
     }
     public static void array() {
         final int minNumbers = 5;

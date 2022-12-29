@@ -2,13 +2,11 @@ package hexlet.code.games;
 
 import static hexlet.code.Engine.WINCOUNT;
 import static hexlet.code.Engine.randomNumber;
-import static hexlet.code.Engine.answer;
-import static hexlet.code.Engine.number;
+import static hexlet.code.Engine.userAnswer;
 import static hexlet.code.Engine.condition;
-import static hexlet.code.Engine.userName;
 
 public class Prime {
-    public static boolean numberIsPrime() {
+    public static boolean numberIsPrime(int number) {
         for (int j = 2; j < number; j++) {
             if (number % j == 0) {
                 return false;
@@ -16,17 +14,17 @@ public class Prime {
         }
         return true;
     }
-    public static void isPrime() {
+    public static void isPrime(String name) {
         System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
         for (var i = 0; i < WINCOUNT; i++) {
-            randomNumber();
+            int number = randomNumber();
             System.out.println("Question: " + number);
-            answer();
-            var correctAnswer = numberIsPrime() ? "yes" : "no";
-            if (condition(correctAnswer)) {
+            var answer = userAnswer();
+            var correctAnswer = numberIsPrime(number) ? "yes" : "no";
+            if (condition(correctAnswer, name, answer)) {
                 return;
             }
         }
-        System.out.println("Congratulations, " + userName + "!");
+        System.out.println("Congratulations, " + name + "!");
     }
 }

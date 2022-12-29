@@ -2,26 +2,25 @@ package hexlet.code.games;
 
 import static hexlet.code.Engine.WINCOUNT;
 import static hexlet.code.Engine.randomNumber;
-import static hexlet.code.Engine.number;
-import static hexlet.code.Engine.answer;
+import static hexlet.code.Engine.userAnswer;
 import static hexlet.code.Engine.condition;
-import static hexlet.code.Engine.userName;
 
 public class Even {
-    public static boolean isEven() {
+    public static boolean isEven(int number) {
         return number % 2 == 0;
     }
-    public static void even() {
+    public static void even(String name) {
         System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
         for (var i = 0; i < WINCOUNT; i++) {
-            randomNumber();
+            int number = randomNumber();
             System.out.println("Question: " + number);
-            answer();
-            var correctAnswer = isEven() ? "yes" : "no";
-            if (condition(correctAnswer)) {
+            var answer = userAnswer();
+            System.out.println("Your answer: " + answer);
+            var correctAnswer = isEven(number) ? "yes" : "no";
+            if (condition(correctAnswer, name, answer)) {
                 return;
             }
         }
-        System.out.println("Congratulations, " + userName + "!");
+        System.out.println("Congratulations, " + name + "!");
     }
 }
