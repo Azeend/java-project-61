@@ -9,15 +9,15 @@ import hexlet.code.games.Prime;
 import hexlet.code.games.Progression;
 import org.apache.commons.lang3.RandomUtils;
 public class Engine {
-    public static final int maxRandom = 100;
+    public static final int MAXRANDOM = 100;
     public static final int WINCOUNT = 3;
 
     public static int randomNumber() {
-        return RandomUtils.nextInt(2, maxRandom);
+        return RandomUtils.nextInt(2, MAXRANDOM);
     }
 
     public static int randomNumber2() {
-        return RandomUtils.nextInt(2, maxRandom);
+        return RandomUtils.nextInt(2, MAXRANDOM);
     }
 
     public static void greet() {
