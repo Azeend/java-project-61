@@ -11,8 +11,9 @@ public class Engine {
     public static int number2;
     public static final int WINCOUNT = 3;
     public static void randomNumber() {
-        number = RandomUtils.nextInt(2, 100);
-        number2 = RandomUtils.nextInt(2, 100);
+        int maxRandom = 100;
+        number = RandomUtils.nextInt(2, maxRandom);
+        number2 = RandomUtils.nextInt(2, maxRandom);
     }
     public static void greet() {
         System.out.println("Welcome to the Brain Games!");
@@ -52,25 +53,31 @@ public class Engine {
         Scanner scan = new Scanner(System.in);
         int choice = scan.nextInt();
         System.out.println("Your choice: " + choice);
+        final var greeting = 1;
+        final var even = 2;
+        final var calc = 3;
+        final var gcd = 4;
+        final var progression = 5;
+        final var prime = 6;
         switch (choice) {
-            case 1 -> greet();
-            case 2 -> {
+            case greeting -> greet();
+            case even -> {
                 greet();
                 Even.even();
             }
-            case 3 -> {
+            case calc -> {
                 greet();
                 Calc.calculate();
             }
-            case 4 -> {
+            case gcd -> {
                 greet();
                 GCD.gcd();
             }
-            case 5 -> {
+            case progression -> {
                 greet();
                 Progression.ariphmProgr();
             }
-            case 6 -> {
+            case prime -> {
                 greet();
                 Prime.isPrime();
             }
