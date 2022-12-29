@@ -1,6 +1,12 @@
 package hexlet.code.games;
 
-import static hexlet.code.Engine.*;
+import static hexlet.code.Engine.WINCOUNT;
+import static hexlet.code.Engine.randomNumber;
+import static hexlet.code.Engine.number;
+import static hexlet.code.Engine.number2;
+import static hexlet.code.Engine.answer;
+import static hexlet.code.Engine.condition;
+import static hexlet.code.Engine.userName;
 
 public class GCD {
     public static void gcd() {

@@ -8,7 +8,7 @@ import static hexlet.code.Engine.condition;
 import static hexlet.code.Engine.userName;
 
 public class Even {
-    public static boolean isEven(int number) {
+    public static boolean isEven() {
         return number % 2 == 0;
     }
     public static void even() {
@@ -17,7 +17,7 @@ public class Even {
             randomNumber();
             System.out.println("Question: " + number);
             answer();
-            var correctAnswer = isEven(number) ? "yes" : "no";
+            var correctAnswer = isEven() ? "yes" : "no";
             if (condition(correctAnswer)) {
                 return;
             }
