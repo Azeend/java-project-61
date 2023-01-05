@@ -2,31 +2,17 @@ package hexlet.code.games;
 
 import org.apache.commons.lang3.RandomUtils;
 
-import static hexlet.code.Engine.WINCOUNT;
-import static hexlet.code.Engine.userAnswer;
-import static hexlet.code.Engine.condition;
-
-public class Progression {
-    private static int first;
-    private static int step;
-    private static String hiddenNumber;
-    public static void ariphmProgr(String name) {
-        System.out.println("What number is missing in the progression?");
-        for (var i = 0; i < WINCOUNT; i++) {
-            final int maxNumber = 50;
-            final int maxStep = 10;
-            first = RandomUtils.nextInt(1, maxNumber);
-            step = RandomUtils.nextInt(1, maxStep);
-            array();
-            var answer = userAnswer();
-            var correctAnswer = hiddenNumber;
-            if (condition(correctAnswer, name, answer)) {
-                return;
-            }
-        }
-        System.out.println("Congratulations, " + name + "!");
+public class Progression implements Game {
+    @Override
+    public String getTask() {
+        return "What number is missing in the progression?";
     }
-    public static void array() {
+    @Override
+    public String[] getGameData() {
+        final int maxNumber = 50;
+        final int maxStep = 10;
+        int first = RandomUtils.nextInt(1, maxNumber);
+        int step = RandomUtils.nextInt(1, maxStep);
         final int minNumbers = 5;
         final int maxNumbers = 10;
         int progressionLength = RandomUtils.nextInt(minNumbers, maxNumbers);
@@ -34,9 +20,12 @@ public class Progression {
         for (var i = 0; i < progressionArray.length; i++) {
             progressionArray[i] = Integer.toString(first + step * i);
         }
-        int randomIndex = RandomUtils.nextInt(0, progressionLength);
-        hiddenNumber = progressionArray[randomIndex];
+        int randomIndex = RandomUtils.nextInt(0, progressionArray.length);
+        var hiddenNumber = progressionArray[randomIndex];
         progressionArray[randomIndex] = "..";
-        System.out.println("Question: " + String.join(" ", progressionArray));
+        var question = "Question: " + String.join(" ", progressionArray);
+        var correctAnswer = hiddenNumber;
+        String[] questionAndAnswer = {question, correctAnswer};
+        return questionAndAnswer;
     }
 }
