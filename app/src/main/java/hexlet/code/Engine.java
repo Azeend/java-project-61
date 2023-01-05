@@ -34,7 +34,7 @@ public class Engine {
     }
     public static void engine(String task, String name, Game questionAndAnswer) {
         System.out.println(task);
-        int wincount = 3;
+        final int wincount = 3;
         for (var i = 0; i < wincount; i++) {
             var gameData = questionAndAnswer.getGameData();
             var question = gameData[0];

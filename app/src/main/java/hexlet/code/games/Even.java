@@ -2,7 +2,7 @@ package hexlet.code.games;
 
 import static hexlet.code.Engine.randomNumber;
 
-public class Even implements Game {
+public final class Even implements Game {
     @Override
     public String getTask() {
         return "Answer 'yes' if the number is even, otherwise answer 'no'.";

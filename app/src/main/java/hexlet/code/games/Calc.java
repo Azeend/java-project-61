@@ -2,7 +2,7 @@ package hexlet.code.games;
 
 import org.apache.commons.lang3.RandomUtils;
 import static hexlet.code.Engine.randomNumber;
-public class Calc implements Game {
+public final class Calc implements Game {
     public static String getAnswer(String randomSign, int randomNum1, int randomNum2) {
         var resultAnswer = "";
         switch (randomSign) {
@@ -29,11 +29,11 @@ public class Calc implements Game {
     }
     @Override
     public String[] getGameData() {
-        var maxRound = 3;
+        final var lastIndex = 2;
         String[] signs = {"+", "-", "*"};
         int randomNum1 = randomNumber();
         int randomNum2 = randomNumber();
-        int randomSignIndex = RandomUtils.nextInt(0, maxRound);
+        int randomSignIndex = RandomUtils.nextInt(0, lastIndex);
         String randomSign = signs[randomSignIndex];
         var resultQuestion = randomNum1 + " " + randomSign + " " + randomNum2;
         var question = "Question: " + resultQuestion;
