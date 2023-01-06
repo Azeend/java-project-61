@@ -6,8 +6,8 @@ import hexlet.code.games.Calc;
 import hexlet.code.games.GCD;
 import hexlet.code.games.Progression;
 import java.util.Scanner;
-import static hexlet.code.Engine.greetingForGames;
-import static hexlet.code.Engine.greetingWithName;
+
+import static hexlet.code.Engine.*;
 
 public class Menu {
     public static void gameSelect() {
@@ -35,56 +35,11 @@ public class Menu {
         final int prime = 6;
         switch (choice) {
             case greet -> Cli.greeting();
-            case even -> {
-                greetingForGames();
-                Scanner scanName = new Scanner(System.in);
-                var name = scanName.next();
-                greetingWithName(name);
-                var evenTask = new Even();
-                var task = evenTask.getTask();
-                var questionAndAnswer = new Even();
-                Engine.engine(task, name, questionAndAnswer);
-            }
-            case calc -> {
-                greetingForGames();
-                Scanner scanName = new Scanner(System.in);
-                var name = scanName.next();
-                greetingWithName(name);
-                var evenTask = new Calc();
-                var task = evenTask.getTask();
-                var questionAndAnswer = new Calc();
-                Engine.engine(task, name, questionAndAnswer);
-            }
-            case gcd -> {
-                greetingForGames();
-                Scanner scanName = new Scanner(System.in);
-                var name = scanName.next();
-                greetingWithName(name);
-                var evenTask = new GCD();
-                var task = evenTask.getTask();
-                var questionAndAnswer = new GCD();
-                Engine.engine(task, name, questionAndAnswer);
-            }
-            case progression -> {
-                greetingForGames();
-                Scanner scanName = new Scanner(System.in);
-                var name = scanName.next();
-                greetingWithName(name);
-                var evenTask = new Progression();
-                var task = evenTask.getTask();
-                var questionAndAnswer = new Progression();
-                Engine.engine(task, name, questionAndAnswer);
-            }
-            case prime -> {
-                greetingForGames();
-                Scanner scanName = new Scanner(System.in);
-                var name = scanName.next();
-                greetingWithName(name);
-                var evenTask = new Prime();
-                var task = evenTask.getTask();
-                var questionAndAnswer = new Prime();
-                Engine.engine(task, name, questionAndAnswer);
-            }
+            case even -> engine(Even.getGameDataEven());
+            case calc -> engine(Calc.getGameDataCalc());
+            case gcd -> engine(GCD.getGameDataGCD());
+            case progression -> engine(Progression.getGameDataProgression());
+            case prime -> engine(Prime.getGameDataPrime());
             default -> {
             }
         }

@@ -1,23 +1,12 @@
 package hexlet.code.games;
 
-import static hexlet.code.Engine.randomNumber;
-
-public final class Even implements Game {
-    @Override
-    public String getTask() {
-        return "Answer 'yes' if the number is even, otherwise answer 'no'.";
-    }
-
-    @Override
-    public String[] getGameData() {
-        var number = randomNumber();
+public class Even  {
+    public static String[] getGameDataEven() {
+        var task = "Answer 'yes' if the number is even, otherwise answer 'no'.";
+        var number = RandomUtilsNumber.randomNumber();
         var question = "Question: " + number;
-        var correctAnswer = isEven(number) ? "yes" : "no";
-        String[] questionAndAnswer = {question, correctAnswer};
+        var correctAnswer = number % 2 == 0 ? "yes" : "no";
+        String[] questionAndAnswer = {question, correctAnswer, task};
         return questionAndAnswer;
-    }
-
-    public static boolean isEven(int number) {
-        return number % 2 == 0;
     }
 }

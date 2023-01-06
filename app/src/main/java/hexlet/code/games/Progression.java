@@ -2,13 +2,9 @@ package hexlet.code.games;
 
 import org.apache.commons.lang3.RandomUtils;
 
-public final class Progression implements Game {
-    @Override
-    public String getTask() {
-        return "What number is missing in the progression?";
-    }
-    @Override
-    public String[] getGameData() {
+public class Progression {
+    public static String[] getGameDataProgression() {
+        var task = "What number is missing in the progression?";
         final int maxNumber = 50;
         final int maxStep = 10;
         int first = RandomUtils.nextInt(1, maxNumber);
@@ -25,7 +21,7 @@ public final class Progression implements Game {
         progressionArray[randomIndex] = "..";
         var question = "Question: " + String.join(" ", progressionArray);
         var correctAnswer = hiddenNumber;
-        String[] questionAndAnswer = {question, correctAnswer};
+        String[] questionAndAnswer = {question, correctAnswer, task};
         return questionAndAnswer;
     }
 }

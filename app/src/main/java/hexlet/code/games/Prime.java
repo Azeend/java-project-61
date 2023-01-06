@@ -1,19 +1,13 @@
 package hexlet.code.games;
 
-import static hexlet.code.Engine.randomNumber;
 
-public final class Prime implements Game {
-    @Override
-    public String getTask() {
-        return "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
-    }
-
-    @Override
-    public String[] getGameData() {
-        var number = randomNumber();
+public class Prime {
+    public static String[] getGameDataPrime() {
+        var task = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+        var number = RandomUtilsNumber.randomNumber();
         var question = "Question: " + number;
         var correctAnswer = numberIsPrime(number) ? "yes" : "no";
-        String[] questionAndAnswer = {question, correctAnswer};
+        String[] questionAndAnswer = {question, correctAnswer, task};
         return questionAndAnswer;
     }
 
