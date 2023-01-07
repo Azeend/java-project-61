@@ -10,7 +10,7 @@ public class GCD {
         engine(getQuestions(numbers, numbers2), getTask(), getAnswers(numbers, numbers2));
     }
     private static String getTask() {
-        return "Find the greatest common divisor of given numbers";
+        return "Find the greatest common divisor of given numbers.";
     }
     private static String[] getQuestions(String[] numbers, String[] numbers2) {
         String[] questions = new String[MAXROUND];
