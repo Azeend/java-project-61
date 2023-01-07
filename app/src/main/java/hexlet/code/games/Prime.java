@@ -8,10 +8,10 @@ public class Prime {
         var numbers = RandomUtilsNumber.getNumbers();
         engine(getQuestions(numbers), getTask(), getAnswers(numbers));
     }
-    public static String getTask() {
+    private static String getTask() {
         return "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
     }
-    public static String[] getAnswers(String[] numbers) {
+    private static String[] getAnswers(String[] numbers) {
         String[] correctAnswers = new String[MAXROUND];
         for (var i = 0; i < MAXROUND; i++) {
             var correctAnswer = (numberIsPrime(Integer.parseInt(numbers[i]))) ? "yes" : "no";
@@ -19,7 +19,7 @@ public class Prime {
         }
         return correctAnswers;
     }
-    public static String[] getQuestions(String[] numbers) {
+    private static String[] getQuestions(String[] numbers) {
         String[] questions = new String[MAXROUND];
         System.arraycopy(numbers, 0, questions, 0, MAXROUND);
         return questions;
