@@ -1,17 +1,31 @@
 package hexlet.code.games;
 
+import static hexlet.code.Engine.engine;
+import static hexlet.code.games.RandomUtilsNumber.MAXROUND;
 
 public class GCD {
-    public static String[] getGameDataGCD() {
-        var task = "Find the greatest common divisor of given numbers.";
-        int number = RandomUtilsNumber.randomNumber();
-        int number2 = RandomUtilsNumber.randomNumber();
-        var question = "Question: " + number + " " + number2;
-        var correctAnswer = Integer.toString(isGCD(number, number2));
-        String[] questionAndAnswer = {question, correctAnswer, task};
-        return questionAndAnswer;
+    public static void playGame() {
+        var numbers = RandomUtilsNumber.getNumbers();
+        var numbers2 = RandomUtilsNumber.getNumbers();
+        engine(getQuestions(numbers, numbers2), getTask(), getAnswers(numbers, numbers2));
     }
-
+    private static String getTask() {
+        return "Find the greatest common divisor of given numbers";
+    }
+    private static String[] getQuestions(String[] numbers, String[] numbers2) {
+        String[] questions = new String[MAXROUND];
+        for (var i = 0; i < MAXROUND; i++) {
+            questions[i] = numbers[i] + " " + numbers2[i];
+        }
+        return questions;
+    }
+    private static String[] getAnswers(String[] numbers, String[] numbers2) {
+        String[] correctAnswers = new String[MAXROUND];
+        for (var i = 0; i < MAXROUND; i++) {
+            correctAnswers[i] = Integer.toString(isGCD(Integer.parseInt(numbers[i]), Integer.parseInt(numbers2[i])));
+        }
+        return correctAnswers;
+    }
     private static int isGCD(int number, int number2) {
         int gcd = 1;
         for (int j = 1; j <= number && j <= number2; j++) {
