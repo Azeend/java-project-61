@@ -3,17 +3,17 @@ package hexlet.code;
 import java.util.Scanner;
 
 public class Engine {
-    public static void engine(String[] questions, String task, String[] correctAnswers) {
+    static final int WINCOUNT = 3;
+    public static void engine(String[][] questionAndAnswers, String task) {
         greetingForGames();
         Scanner scanName = new Scanner(System.in);
         var name = scanName.next();
         greetingWithName(name);
         System.out.println(task);
-        final int maxRounds = 3;
-        for (var i = 0; i < maxRounds; i++) {
-            System.out.println("Question: " + questions[i]);
+        for (var i = 0; i < WINCOUNT; i++) {
+            System.out.println("Question: " + questionAndAnswers[0][i]);
             var answer = getUserAnswer();
-            var correctAnswer = correctAnswers[i];
+            var correctAnswer = questionAndAnswers[1][i];
             System.out.println("Your answer: " + answer);
             if (checkAnswer(correctAnswer, name, answer)) {
                 return;

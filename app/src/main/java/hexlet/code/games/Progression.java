@@ -6,19 +6,18 @@ import static hexlet.code.games.RandomUtilsNumber.MAXROUND;
 
 public class Progression {
     public static void playGame() {
-        var questions = getQuestions();
-        engine(questions, getTask(), getAnswers(questions));
+        var questions = generateQuestionsArray();
+        var answers = generateAnswersArray(questions);
+        String[][] questionAndAnswers = {questions, answers};
+        engine(questionAndAnswers, TASK);
     }
-    private static String getTask() {
-        return "What number is missing in the progression?";
-    }
-    private static Integer[] getNumbersArray() {
-        final int maxNumber = 50;
-        final int maxStep = 10;
-        int step = RandomUtils.nextInt(1, maxStep);
-        int first = RandomUtils.nextInt(1, maxNumber);
-        final int minLength = 5;
-        final int maxLength = 10;
+    static final int MAXNUMBER = 50;
+    static final int MAXSTEP = 10;
+    static final int MINLENGHT = 5;
+    static final int MAXLENGTH = 10;
+    static final String TASK =  "What number is missing in the progression?";
+
+    private static Integer[] generateNumbersArray(int maxLength, int minLength, int first, int step) {
         int progressionLength = RandomUtils.nextInt(minLength, maxLength);
         Integer[] numbersArray = new Integer[progressionLength];
         for (var i = 0; i < numbersArray.length; i++) {
@@ -27,7 +26,7 @@ public class Progression {
         return numbersArray;
     }
 
-    private static String getProgressionWithHidden(Integer[] numbersArray) {
+    private static String generateProgressionWithHidden(Integer[] numbersArray) {
         int progressionLength = numbersArray.length;
         int randomIndex = RandomUtils.nextInt(0, progressionLength);
         String[] results = new String[progressionLength];
@@ -42,24 +41,26 @@ public class Progression {
         return result;
     }
 
-    private static String[] getQuestions() {
+    private static String[] generateQuestionsArray() {
         String[] questions = new String[MAXROUND];
         for (var i = 0; i < MAXROUND; i++) {
-            questions[i] = getProgressionWithHidden(getNumbersArray());
+            int step = RandomUtils.nextInt(1, MAXSTEP);
+            int first = RandomUtils.nextInt(1, MAXNUMBER);
+            questions[i] = generateProgressionWithHidden(generateNumbersArray(MAXLENGTH, MINLENGHT, first, step));
         }
         return questions;
     }
 
-    private static String[] getAnswers(String[] questions) {
+    private static String[] generateAnswersArray(String[] questions) {
         String[] correctAnswers = new String[MAXROUND];
         for (var i = 0; i < MAXROUND; i++) {
-            var answer = getRightAnswer(questions[i]);
+            var answer = generateRightAnswer(questions[i]);
             correctAnswers[i] = Integer.toString(answer);
         }
         return correctAnswers;
     }
 
-    private static int getRightAnswer(String progressionWithHidden) {
+    private static int generateRightAnswer(String progressionWithHidden) {
         String[] numbers = progressionWithHidden.split(" ");
         var result = 0;
         for (var i = 0; i < 2; i++) {

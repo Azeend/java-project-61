@@ -5,13 +5,15 @@ import static hexlet.code.games.RandomUtilsNumber.MAXROUND;
 
 public class Prime {
     public static void playGame() {
-        var numbers = RandomUtilsNumber.getNumbers();
-        engine(getQuestions(numbers), getTask(), getAnswers(numbers));
+        var numbers = RandomUtilsNumber.generateNumbers();
+        var questions = generateQuestionsArray(numbers);
+        var answers = generateAnswersArray(numbers);
+        String[][] questionAndAnswers = {questions, answers};
+        engine(questionAndAnswers, TASK);
     }
-    private static String getTask() {
-        return "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
-    }
-    private static String[] getAnswers(String[] numbers) {
+    static final String TASK = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+
+    private static String[] generateAnswersArray(String[] numbers) {
         String[] correctAnswers = new String[MAXROUND];
         for (var i = 0; i < MAXROUND; i++) {
             var correctAnswer = (numberIsPrime(Integer.parseInt(numbers[i]))) ? "yes" : "no";
@@ -19,7 +21,7 @@ public class Prime {
         }
         return correctAnswers;
     }
-    private static String[] getQuestions(String[] numbers) {
+    private static String[] generateQuestionsArray(String[] numbers) {
         String[] questions = new String[MAXROUND];
         System.arraycopy(numbers, 0, questions, 0, MAXROUND);
         return questions;
