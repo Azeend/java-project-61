@@ -2,12 +2,20 @@ package hexlet.code;
 
 import hexlet.code.games.Calculator;
 import hexlet.code.games.Even;
-import hexlet.code.games.GCD;
+import hexlet.code.games.Gcd;
 import hexlet.code.games.Prime;
 import hexlet.code.games.Progression;
+
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class App {
+    static final int GREET = 1;
+    static final int EVEN = 2;
+    static final int CALCULATOR = 3;
+    static final int GCD = 4;
+    static final int PROGRESSION = 5;
+    static final int PRIME = 6;
     public static void main(String[] args) {
         gameSelect();
         gameChoice();
@@ -25,24 +33,17 @@ public class App {
     }
     private static void gameChoice() {
         Scanner scan = new Scanner(System.in);
-        int choice = scan.nextInt();
+        int choice = Integer.parseInt(scan.next());
         System.out.println("Your choice: " + choice);
         System.out.println();
-        final int greet = 1;
-        final int even = 2;
-        final int calc = 3;
-        final int gcd = 4;
-        final int progression = 5;
-        final int prime = 6;
         switch (choice) {
-            case greet -> Cli.greeting();
-            case even -> Even.playGame();
-            case calc -> Calculator.playGame();
-            case gcd -> GCD.playGame();
-            case progression -> Progression.playGame();
-            case prime -> Prime.playGame();
-            default -> {
-            }
+            case GREET -> Cli.greeting();
+            case EVEN -> Even.playGame();
+            case CALCULATOR -> Calculator.playGame();
+            case GCD -> Gcd.playGame();
+            case PROGRESSION -> Progression.playGame();
+            case PRIME -> Prime.playGame();
+            default -> throw new NoSuchElementException("Wrong choice");
         }
     }
 }
