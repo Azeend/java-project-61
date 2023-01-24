@@ -12,9 +12,9 @@ public class Gcd {
     }
     private static String[][] generateQuestionsAndAnswers() {
         String[][] questions = new String[2][MAXROUND];
+        var numbers = RandomNumberUtils.generateNumbers();
+        var numbers2 = RandomNumberUtils.generateNumbers();
         for (var i = 0; i < MAXROUND; i++) {
-            var numbers = RandomNumberUtils.generateNumbers();
-            var numbers2 = RandomNumberUtils.generateNumbers();
             var correctAnswer = Integer.toString(findGCD(Integer.parseInt(numbers[i]),
                     Integer.parseInt(numbers2[i])));
             questions[0][i] = numbers[i] + " " + numbers2[i];

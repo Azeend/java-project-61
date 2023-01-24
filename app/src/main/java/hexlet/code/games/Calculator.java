@@ -13,9 +13,9 @@ public class Calculator {
     }
     private static String[][] generateQuestionsAndAnswers() {
         String[][] questions = new String[2][MAXROUND];
+        var randomNum1 = RandomNumberUtils.generateNumbers();
+        var randomNum2 = RandomNumberUtils.generateNumbers();
         for (var i = 0; i < MAXROUND; i++) {
-            var randomNum1 = RandomNumberUtils.generateNumbers();
-            var randomNum2 = RandomNumberUtils.generateNumbers();
             final var lastIndex = 2;
             int randomSignIndex = RandomUtils.nextInt(0, lastIndex);
             String randomSign = SIGNS[randomSignIndex];

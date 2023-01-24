@@ -13,10 +13,10 @@ public class Prime {
 
     private static String[][] generateQuestionsAndAnswers() {
         String[][] questions = new String[2][MAXROUND];
+        var numbers = RandomNumberUtils.generateNumbers();
         for (var i = 0; i < MAXROUND; i++) {
-            var numbers = RandomNumberUtils.generateNumbers();
-            var num = numbers[i];
-            var correctAnswer = (findNumberIsPrime(Integer.parseInt(num))) ? "yes" : "no";
+            var randomNumber = numbers[i];
+            var correctAnswer = (findNumberIsPrime(Integer.parseInt(randomNumber))) ? "yes" : "no";
             questions[0][i] = numbers[i];
             questions[1][i] = correctAnswer;
         }

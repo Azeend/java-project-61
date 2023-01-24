@@ -13,11 +13,11 @@ public class Even  {
 
     private static String[][] generateQuestionsAndAnswers() {
         String[][] questions = new String[2][MAXROUND];
+        var randomNumbers = RandomNumberUtils.generateNumbers();
         for (var i = 0; i < MAXROUND; i++) {
-            var numbers = RandomNumberUtils.generateNumbers();
-            var num = numbers[i];
-            var correctAnswer = (findNumberIsEven(Integer.parseInt(num))) ? "yes" : "no";
-            questions[0][i] = numbers[i];
+            var number = randomNumbers[i];
+            var correctAnswer = (findNumberIsEven(Integer.parseInt(number))) ? "yes" : "no";
+            questions[0][i] = randomNumbers[i];
             questions[1][i] = correctAnswer;
         }
         return questions;
