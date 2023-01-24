@@ -15,8 +15,7 @@ public class Prime {
         String[][] questions = new String[2][MAXROUND];
         var numbers = RandomNumberUtils.generateNumbers();
         for (var i = 0; i < MAXROUND; i++) {
-            var randomNumber = numbers[i];
-            var correctAnswer = (findNumberIsPrime(Integer.parseInt(randomNumber))) ? "yes" : "no";
+            var correctAnswer = (findNumberIsPrime(Integer.parseInt(numbers[i]))) ? "yes" : "no";
             questions[0][i] = numbers[i];
             questions[1][i] = correctAnswer;
         }

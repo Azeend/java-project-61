@@ -15,14 +15,10 @@ public class Even  {
         String[][] questions = new String[2][MAXROUND];
         var randomNumbers = RandomNumberUtils.generateNumbers();
         for (var i = 0; i < MAXROUND; i++) {
-            var number = randomNumbers[i];
-            var correctAnswer = (findNumberIsEven(Integer.parseInt(number))) ? "yes" : "no";
+            var correctAnswer = Integer.parseInt(randomNumbers[i]) % 2 == 0 ? "yes" : "no";
             questions[0][i] = randomNumbers[i];
             questions[1][i] = correctAnswer;
         }
         return questions;
-    }
-    private static boolean findNumberIsEven(int number) {
-        return number % 2 == 0;
     }
 }

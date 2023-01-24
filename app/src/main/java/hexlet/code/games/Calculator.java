@@ -15,8 +15,8 @@ public class Calculator {
         String[][] questions = new String[2][MAXROUND];
         var randomNum1 = RandomNumberUtils.generateNumbers();
         var randomNum2 = RandomNumberUtils.generateNumbers();
+        final var lastIndex = 2;
         for (var i = 0; i < MAXROUND; i++) {
-            final var lastIndex = 2;
             int randomSignIndex = RandomUtils.nextInt(0, lastIndex);
             String randomSign = SIGNS[randomSignIndex];
             var correctAnswer = calculateAnswer(randomSign, Integer.parseInt(randomNum1[i]),
