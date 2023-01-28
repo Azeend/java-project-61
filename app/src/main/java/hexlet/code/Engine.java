@@ -1,16 +1,16 @@
 package hexlet.code;
 
 import java.util.Scanner;
+import static hexlet.code.util.RandomNumberUtils.MAXROUND;
 
 public class Engine {
-    static final int WINCOUNT = 3;
-    public static void engine(String[][] questionAndAnswers, String task) {
-        greetingForGames();
+    public static void startGame(String[][] questionAndAnswers, String task) {
+        greetForGames();
         Scanner scanName = new Scanner(System.in);
         var name = scanName.next();
-        greetingWithName(name);
+        greetWithName(name);
         System.out.println(task);
-        for (var i = 0; i < WINCOUNT; i++) {
+        for (var i = 0; i < MAXROUND; i++) {
             System.out.println("Question: " + questionAndAnswers[0][i]);
             var answer = getUserAnswer();
             var correctAnswer = questionAndAnswers[1][i];
@@ -21,7 +21,7 @@ public class Engine {
         }
         System.out.println("Congratulations, " + name + "!");
     }
-    private static void greetingForGames() {
+    private static void greetForGames() {
         System.out.println("Welcome to the Brain Games!");
         System.out.println("May I have your name?");
     }
@@ -39,7 +39,7 @@ public class Engine {
         Scanner scan = new Scanner(System.in);
         return scan.next();
     }
-    private static void greetingWithName(String name) {
+    private static void greetWithName(String name) {
         System.out.println("Hello, " + name + "!");
         System.out.println();
     }

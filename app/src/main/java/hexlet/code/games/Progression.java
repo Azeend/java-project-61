@@ -2,8 +2,8 @@ package hexlet.code.games;
 
 import org.apache.commons.lang3.RandomUtils;
 
-import static hexlet.code.Engine.engine;
-import static hexlet.code.Util.RandomNumberUtils.MAXROUND;
+import static hexlet.code.Engine.startGame;
+import static hexlet.code.util.RandomNumberUtils.MAXROUND;
 
 public class Progression {
     static final int MAXNUMBER = 50;
@@ -12,7 +12,7 @@ public class Progression {
     static final int MAXLENGTH = 10;
     static final String TASK =  "What number is missing in the progression?";
     public static void playGame() {
-        engine(generateQuestionsAndAnswers(), TASK);
+        startGame(generateQuestionsAndAnswers(), TASK);
     }
     private static String[] generateNumbersArray(int maxLength, int minLength, int first, int step) {
         int progressionLength = RandomUtils.nextInt(minLength, maxLength);
@@ -24,7 +24,6 @@ public class Progression {
     }
 
     private static String[] generateArrayOfQuestionAndAnswer(String[] results) {
-        String[] q = new String[results.length];
         int randomIndex = RandomUtils.nextInt(0, results.length);
         var hiddenNumber = results[randomIndex];
         results[randomIndex] = "..";

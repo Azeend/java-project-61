@@ -1,4 +1,4 @@
-package hexlet.code.Util;
+package hexlet.code.util;
 
 import org.apache.commons.lang3.RandomUtils;
 

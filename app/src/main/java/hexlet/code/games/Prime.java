@@ -1,14 +1,14 @@
 package hexlet.code.games;
 
-import hexlet.code.Util.RandomNumberUtils;
+import hexlet.code.util.RandomNumberUtils;
 
-import static hexlet.code.Engine.engine;
-import static hexlet.code.Util.RandomNumberUtils.MAXROUND;
+import static hexlet.code.Engine.startGame;
+import static hexlet.code.util.RandomNumberUtils.MAXROUND;
 
 public class Prime {
     static final String TASK = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
     public static void playGame() {
-        engine(generateQuestionsAndAnswers(), TASK);
+        startGame(generateQuestionsAndAnswers(), TASK);
     }
 
     private static String[][] generateQuestionsAndAnswers() {

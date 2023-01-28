@@ -1,15 +1,18 @@
 package hexlet.code.games;
 
-import hexlet.code.Util.RandomNumberUtils;
+import hexlet.code.util.RandomNumberUtils;
 import org.apache.commons.lang3.RandomUtils;
-import static hexlet.code.Engine.engine;
-import static hexlet.code.Util.RandomNumberUtils.MAXROUND;
+
+import java.util.NoSuchElementException;
+
+import static hexlet.code.Engine.startGame;
+import static hexlet.code.util.RandomNumberUtils.MAXROUND;
 
 public class Calculator {
     static final String[] SIGNS = {"+", "-", "*"};
     static final String TASK = "What is the result of the expression?";
     public static void playGame() {
-        engine(generateQuestionsAndAnswers(), TASK);
+        startGame(generateQuestionsAndAnswers(), TASK);
     }
     private static String[][] generateQuestionsAndAnswers() {
         String[][] questions = new String[2][MAXROUND];
@@ -27,7 +30,7 @@ public class Calculator {
         return questions;
     }
     private static String calculateAnswer(String randomSign, int randomNum1, int randomNum2) {
-        var resultAnswer = "";
+        String resultAnswer;
         switch (randomSign) {
             case "+" -> {
                 resultAnswer = Integer.toString(randomNum1 + randomNum2);
@@ -42,8 +45,8 @@ public class Calculator {
                 return resultAnswer;
             }
             default -> {
+                throw new NoSuchElementException();
             }
         }
-        return resultAnswer;
     }
 }
