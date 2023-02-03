@@ -12,20 +12,19 @@ public class Gcd {
     }
     private static String[][] generateQuestionsAndAnswers() {
         String[][] questions = new String[2][MAXROUND];
-        var numbers = RandomNumberUtils.generateNumbers();
-        var numbers2 = RandomNumberUtils.generateNumbers();
+        var numbersArrayFirst = RandomNumberUtils.generateNumbers();
+        var numbersArraySecond = RandomNumberUtils.generateNumbers();
         for (var i = 0; i < MAXROUND; i++) {
-            var correctAnswer = Integer.toString(findGCD(Integer.parseInt(numbers[i]),
-                    Integer.parseInt(numbers2[i])));
-            questions[0][i] = numbers[i] + " " + numbers2[i];
+            var correctAnswer = Integer.toString(findGCD(numbersArrayFirst[i], numbersArraySecond[i]));
+            questions[0][i] = numbersArrayFirst[i] + " " + numbersArraySecond[i];
             questions[1][i] = correctAnswer;
         }
         return questions;
     }
-    private static int findGCD(int number, int number2) {
+    private static int findGCD(int leftNumber, int rightNumber) {
         int gcd = 1;
-        for (int j = 1; j <= number && j <= number2; j++) {
-            if (number % j == 0 && number2 % j == 0) {
+        for (int j = 1; j <= leftNumber && j <= rightNumber; j++) {
+            if (leftNumber % j == 0 && rightNumber % j == 0) {
                 gcd = j;
             }
         }

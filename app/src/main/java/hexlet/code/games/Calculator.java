@@ -16,32 +16,30 @@ public class Calculator {
     }
     private static String[][] generateQuestionsAndAnswers() {
         String[][] questions = new String[2][MAXROUND];
-        var randomNum1 = RandomNumberUtils.generateNumbers();
-        var randomNum2 = RandomNumberUtils.generateNumbers();
+        var leftNumber = RandomNumberUtils.generateNumbers();
+        var rightNumber = RandomNumberUtils.generateNumbers();
         final var lastIndex = 2;
         for (var i = 0; i < MAXROUND; i++) {
-            int randomSignIndex = RandomUtils.nextInt(0, lastIndex);
-            String randomSign = SIGNS[randomSignIndex];
-            var correctAnswer = calculateAnswer(randomSign, Integer.parseInt(randomNum1[i]),
-                    Integer.parseInt(randomNum2[i]));
-            questions[0][i] = randomNum1[i] + " " + randomSign + " " + randomNum2[i];
+            String mathOperand = SIGNS[RandomUtils.nextInt(0, lastIndex)];
+            var correctAnswer = calculateAnswer(mathOperand, leftNumber[i], rightNumber[i]);
+            questions[0][i] = leftNumber[i] + " " + mathOperand + " " + rightNumber[i];
             questions[1][i] = correctAnswer;
         }
         return questions;
     }
-    private static String calculateAnswer(String randomSign, int randomNum1, int randomNum2) {
+    private static String calculateAnswer(String mathOperand, int leftNumber, int rightNumber) {
         String resultAnswer;
-        switch (randomSign) {
+        switch (mathOperand) {
             case "+" -> {
-                resultAnswer = Integer.toString(randomNum1 + randomNum2);
+                resultAnswer = Integer.toString(leftNumber + rightNumber);
                 return resultAnswer;
             }
             case "-" -> {
-                resultAnswer = Integer.toString(randomNum1 - randomNum2);
+                resultAnswer = Integer.toString(leftNumber - rightNumber);
                 return resultAnswer;
             }
             case "*" -> {
-                resultAnswer = Integer.toString(randomNum1 * randomNum2);
+                resultAnswer = Integer.toString(leftNumber * rightNumber);
                 return resultAnswer;
             }
             default -> {
