@@ -13,15 +13,18 @@ public class Prime {
 
     private static String[][] generateQuestionsAndAnswers() {
         String[][] questions = new String[2][MAXROUND];
-        var numbers = RandomNumberUtils.generateNumbers();
+        var numbersArray = RandomNumberUtils.generateNumbers();
         for (var i = 0; i < MAXROUND; i++) {
-            var correctAnswer = (findNumberIsPrime(Integer.parseInt(numbers[i]))) ? "yes" : "no";
-            questions[0][i] = numbers[i];
+            var correctAnswer = (isPrime(numbersArray[i])) ? "yes" : "no";
+            questions[0][i] = Integer.toString(numbersArray[i]);
             questions[1][i] = correctAnswer;
         }
         return questions;
     }
-    private static boolean findNumberIsPrime(int number) {
+    private static boolean isPrime(int number) {
+        if (number < 2) {
+            return false;
+        }
         for (int j = 2; j < number; j++) {
             if (number % j == 0) {
                 return false;

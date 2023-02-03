@@ -13,40 +13,35 @@ public class Progression {
     public static void playGame() {
         startGame(generateQuestionsAndAnswers(), TASK);
     }
+    private static String[] generateNumbersArray(int maxLength, int minLength, int first, int step) {
+        int progressionLength = RandomUtils.nextInt(minLength, maxLength);
+        String[] results = new String[progressionLength];
+        for (var i = 0; i < results.length; i++) {
+            results[i] = Integer.toString(first + step * i);
+        }
+        return results;
+    }
+
+    private static String[] generateArrayOfQuestionAndAnswer(String[] results) {
+        int randomIndex = RandomUtils.nextInt(0, results.length);
+        var hiddenNumber = results[randomIndex];
+        results[randomIndex] = "..";
+        var correctAnswer = hiddenNumber;
+        String question = String.join(" ", results);
+        String[] questionAndAnswer = {question, correctAnswer};
+        return questionAndAnswer;
+    }
 
     private static String[][] generateQuestionsAndAnswers() {
         String[][] questions = new String[2][MAXROUND];
         for (var i = 0; i < MAXROUND; i++) {
             int step = RandomUtils.nextInt(1, MAXSTEP);
             int first = RandomUtils.nextInt(1, MAXNUMBER);
-            int progressionLength = RandomUtils.nextInt(MINLENGHT, MAXLENGTH);
             String[] questionArray =
-                    generateArrayOfQuestionAndAnswer(generateNumbersArray(progressionLength, first, step));
+                    generateArrayOfQuestionAndAnswer(generateNumbersArray(MAXLENGTH, MINLENGHT, first, step));
             questions[0][i] = questionArray[0];
             questions[1][i] = questionArray[1];
         }
         return questions;
-    }
-
-    private static int[] generateNumbersArray(int progressionLength, int first, int step) {
-        int[] results = new int[progressionLength];
-        for (var i = 0; i < results.length; i++) {
-            results[i] = (first + step * i);
-        }
-        return results;
-    }
-
-    private static String[] generateArrayOfQuestionAndAnswer(int[] results) {
-        int indexOfHiddenNumber = RandomUtils.nextInt(0, results.length);
-        String[] numbersAsString = new String[results.length];
-        for (var i = 0; i < results.length; i++) {
-            numbersAsString[i] = Integer.toString(results[i]);
-        }
-        var hiddenNumber = numbersAsString[indexOfHiddenNumber];
-        numbersAsString[indexOfHiddenNumber] = "..";
-        var correctAnswer = hiddenNumber;
-        String question = String.join(" ", numbersAsString);
-        String[] questionAndAnswer = {question, correctAnswer};
-        return questionAndAnswer;
     }
 }

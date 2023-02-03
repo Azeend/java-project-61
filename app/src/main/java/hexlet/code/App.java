@@ -16,6 +16,7 @@ public class App {
     static final int GCD = 4;
     static final int PROGRESSION = 5;
     static final int PRIME = 6;
+    static final int EXIT = 0;
     public static void main(String[] args) {
         gameSelect();
         gameChoice();
@@ -43,6 +44,8 @@ public class App {
             case GCD -> Gcd.playGame();
             case PROGRESSION -> Progression.playGame();
             case PRIME -> Prime.playGame();
+            case EXIT -> {
+            }
             default -> throw new NoSuchElementException("Wrong choice");
         }
     }

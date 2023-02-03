@@ -13,15 +13,15 @@ public class Even  {
 
     private static String[][] generateQuestionsAndAnswers() {
         String[][] questions = new String[2][MAXROUND];
-        var randomNumbers = RandomNumberUtils.generateNumbers();
+        var numbersArray = RandomNumberUtils.generateNumbers();
         for (var i = 0; i < MAXROUND; i++) {
-            var correctAnswer = findNumberIsEven(Integer.parseInt(randomNumbers[i])) ? "yes" : "no";
-            questions[0][i] = randomNumbers[i];
+            var correctAnswer = isEven(numbersArray[i]) ? "yes" : "no";
+            questions[0][i] = Integer.toString(numbersArray[i]);
             questions[1][i] = correctAnswer;
         }
         return questions;
     }
-    private static boolean findNumberIsEven(int number) {
+    private static boolean isEven(int number) {
         return  number % 2 == 0;
     }
 }
