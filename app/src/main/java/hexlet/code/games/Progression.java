@@ -13,8 +13,7 @@ public class Progression {
     public static void playGame() {
         startGame(generateQuestionsAndAnswers(), TASK);
     }
-    private static String[] generateNumbersArray(int maxLength, int minLength, int first, int step) {
-        int progressionLength = RandomUtils.nextInt(minLength, maxLength);
+    private static String[] generateNumbersArray(int progressionLength, int first, int step) {
         String[] results = new String[progressionLength];
         for (var i = 0; i < results.length; i++) {
             results[i] = Integer.toString(first + step * i);
@@ -37,8 +36,9 @@ public class Progression {
         for (var i = 0; i < MAXROUND; i++) {
             int step = RandomUtils.nextInt(1, MAXSTEP);
             int first = RandomUtils.nextInt(1, MAXNUMBER);
+            int progressionLength = RandomUtils.nextInt(MINLENGHT, MAXLENGTH);
             String[] questionArray =
-                    generateArrayOfQuestionAndAnswer(generateNumbersArray(MAXLENGTH, MINLENGHT, first, step));
+                    generateArrayOfQuestionAndAnswer(generateNumbersArray(progressionLength, first, step));
             questions[0][i] = questionArray[0];
             questions[1][i] = questionArray[1];
         }
