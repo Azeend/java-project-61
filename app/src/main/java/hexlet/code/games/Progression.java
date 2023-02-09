@@ -1,8 +1,10 @@
 package hexlet.code.games;
 
 import org.apache.commons.lang3.RandomUtils;
+
+import static hexlet.code.Engine.MAXROUND;
 import static hexlet.code.Engine.startGame;
-import static hexlet.code.util.RandomNumberUtils.MAXROUND;
+
 
 public class Progression {
     static final int MAXNUMBER = 50;
@@ -32,15 +34,15 @@ public class Progression {
     }
 
     private static String[][] generateQuestionsAndAnswers() {
-        String[][] questions = new String[2][MAXROUND];
+        String[][] questions = new String[MAXROUND][2];
         for (var i = 0; i < MAXROUND; i++) {
             int step = RandomUtils.nextInt(1, MAXSTEP);
             int first = RandomUtils.nextInt(1, MAXNUMBER);
             int progressionLength = RandomUtils.nextInt(MINLENGHT, MAXLENGTH);
             String[] questionArray =
                     generateArrayOfQuestionAndAnswer(generateNumbersArray(progressionLength, first, step));
-            questions[0][i] = questionArray[0];
-            questions[1][i] = questionArray[1];
+            questions[i][0] = questionArray[0];
+            questions[i][1] = questionArray[1];
         }
         return questions;
     }

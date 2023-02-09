@@ -1,9 +1,9 @@
 package hexlet.code.games;
 
-import hexlet.code.util.RandomNumberUtils;
+import hexlet.code.util.RandomNumbersUtils;
 
 import static hexlet.code.Engine.startGame;
-import static hexlet.code.util.RandomNumberUtils.MAXROUND;
+import static hexlet.code.Engine.MAXROUND;
 
 public class Gcd {
     static final String TASK = "Find the greatest common divisor of given numbers.";
@@ -11,13 +11,13 @@ public class Gcd {
         startGame(generateQuestionsAndAnswers(), TASK);
     }
     private static String[][] generateQuestionsAndAnswers() {
-        String[][] questions = new String[2][MAXROUND];
-        var numbersArrayFirst = RandomNumberUtils.generateNumbers();
-        var numbersArraySecond = RandomNumberUtils.generateNumbers();
+        String[][] questions = new String[MAXROUND][2];
         for (var i = 0; i < MAXROUND; i++) {
-            var correctAnswer = Integer.toString(findGCD(numbersArrayFirst[i], numbersArraySecond[i]));
-            questions[0][i] = numbersArrayFirst[i] + " " + numbersArraySecond[i];
-            questions[1][i] = correctAnswer;
+            var leftNumbers = RandomNumbersUtils.generateNumber();
+            var rightNumbers = RandomNumbersUtils.generateNumber();
+            var correctAnswer = Integer.toString(findGCD(leftNumbers, rightNumbers));
+            questions[i][0] = leftNumbers + " " + rightNumbers;
+            questions[i][1] = correctAnswer;
         }
         return questions;
     }

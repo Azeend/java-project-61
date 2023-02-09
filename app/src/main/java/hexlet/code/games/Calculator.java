@@ -1,12 +1,12 @@
 package hexlet.code.games;
 
-import hexlet.code.util.RandomNumberUtils;
+import hexlet.code.util.RandomNumbersUtils;
 import org.apache.commons.lang3.RandomUtils;
 
 import java.util.NoSuchElementException;
 
+import static hexlet.code.Engine.MAXROUND;
 import static hexlet.code.Engine.startGame;
-import static hexlet.code.util.RandomNumberUtils.MAXROUND;
 
 public class Calculator {
     static final String[] SIGNS = {"+", "-", "*"};
@@ -15,15 +15,14 @@ public class Calculator {
         startGame(generateQuestionsAndAnswers(), TASK);
     }
     private static String[][] generateQuestionsAndAnswers() {
-        String[][] questions = new String[2][MAXROUND];
-        var leftNumber = RandomNumberUtils.generateNumbers();
-        var rightNumber = RandomNumberUtils.generateNumbers();
-        final var lastIndex = 2;
+        String[][] questions = new String[MAXROUND][2];
         for (var i = 0; i < MAXROUND; i++) {
-            String mathOperand = SIGNS[RandomUtils.nextInt(0, lastIndex)];
-            var correctAnswer = calculateAnswer(mathOperand, leftNumber[i], rightNumber[i]);
-            questions[0][i] = leftNumber[i] + " " + mathOperand + " " + rightNumber[i];
-            questions[1][i] = correctAnswer;
+            var leftNumber = RandomNumbersUtils.generateNumber();
+            var rightNumber = RandomNumbersUtils.generateNumber();
+            String mathOperand = SIGNS[RandomUtils.nextInt(0, SIGNS.length)];
+            var correctAnswer = calculateAnswer(mathOperand, leftNumber, rightNumber);
+            questions[i][0] = leftNumber + " " + mathOperand + " " + rightNumber;
+            questions[i][1] = correctAnswer;
         }
         return questions;
     }

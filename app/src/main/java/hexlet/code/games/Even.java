@@ -1,9 +1,9 @@
 package hexlet.code.games;
 
-import hexlet.code.util.RandomNumberUtils;
+import hexlet.code.util.RandomNumbersUtils;
 
 import static hexlet.code.Engine.startGame;
-import static hexlet.code.util.RandomNumberUtils.MAXROUND;
+import static hexlet.code.Engine.MAXROUND;
 
 public class Even  {
     static final String TASK = "Answer 'yes' if the number is even, otherwise answer 'no'.";
@@ -12,12 +12,12 @@ public class Even  {
     }
 
     private static String[][] generateQuestionsAndAnswers() {
-        String[][] questions = new String[2][MAXROUND];
-        var numbersArray = RandomNumberUtils.generateNumbers();
+        String[][] questions = new String[MAXROUND][2];
         for (var i = 0; i < MAXROUND; i++) {
-            var correctAnswer = isEven(numbersArray[i]) ? "yes" : "no";
-            questions[0][i] = Integer.toString(numbersArray[i]);
-            questions[1][i] = correctAnswer;
+            var number = RandomNumbersUtils.generateNumber();
+            var correctAnswer = isEven(number) ? "yes" : "no";
+            questions[i][0] = Integer.toString(number);
+            questions[i][1] = correctAnswer;
         }
         return questions;
     }
